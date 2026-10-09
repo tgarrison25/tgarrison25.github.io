@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" width="700" height="560" font-family="-apple-system, Segoe UI, Helvetica, Arial, sans-serif" role="img">
+<title>Distribution of the three Erdős-adjacency metrics</title>
+<desc>Three histograms, equal-width bins, score on the horizontal axis and number of people on a logarithmic vertical axis. Collaboration M2 puts 10,820 of 14,282 people in the single bin at score 1. Problem-solving M5 has no comparable spike but only 1,140 people score at all. The combined metric M4-prime inherits M2's pile-up.</desc>
+<style>.t{font-size:15px;font-weight:600;fill:#111827}.s{font-size:11.5px;fill:#4b5563}.pt{font-size:12.5px;font-weight:600;fill:#111827}.ps{font-size:10.5px;fill:#4b5563}.ax{font-size:9px;fill:#9ca3af;font-family:ui-monospace,Menlo,monospace}.an{font-size:9.5px;font-style:italic;fill:#4b5563}.lb{font-size:10px;fill:#4b5563}@media(prefers-color-scheme:dark){.t,.pt{fill:#f3f4f6}.s,.ps,.an,.lb{fill:#9ca3af}.ax{fill:#6b7280}.bg{fill:#0b0f19}.g{stroke:#374151}.b{stroke:#6b7280}}</style>
+<rect class="bg" width="700" height="560" fill="#fff"/>
+<text class="t" x="16" y="26">Distribution of each Erdős-adjacency metric</text>
+<text class="s" x="16" y="44">Equal-width bins; score across the bottom, people up the side on a log scale.</text>
+<text class="pt" x="16" y="58">Collaboration  M2</text>
+<text class="ps" x="16" y="73">distinct Erdős-1 coauthors · 216 score zero</text>
+<line class="g" x1="56" y1="172.0" x2="684" y2="172.0" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="175.0" text-anchor="end">1</text>
+<line class="g" x1="56" y1="149.2" x2="684" y2="149.2" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="152.2" text-anchor="end">10</text>
+<line class="g" x1="56" y1="126.4" x2="684" y2="126.4" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="129.4" text-anchor="end">100</text>
+<line class="g" x1="56" y1="103.6" x2="684" y2="103.6" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="106.6" text-anchor="end">1k</text>
+<line class="g" x1="56" y1="80.9" x2="684" y2="80.9" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="83.9" text-anchor="end">10k</text>
+<rect x="66.9" y="80.1" width="9.1" height="91.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="77.2" y="98.2" width="9.1" height="73.8" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="87.5" y="107.0" width="9.1" height="65.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="97.8" y="114.4" width="9.1" height="57.6" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="108.1" y="120.8" width="9.1" height="51.2" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="118.4" y="123.8" width="9.1" height="48.2" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="128.7" y="126.8" width="9.1" height="45.2" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="139.0" y="130.5" width="9.1" height="41.5" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="149.3" y="133.1" width="9.1" height="38.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="159.6" y="136.8" width="9.1" height="35.2" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="169.8" y="140.6" width="9.1" height="31.4" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="180.1" y="142.9" width="9.1" height="29.1" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="190.4" y="145.9" width="9.1" height="26.1" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="200.7" y="151.4" width="9.1" height="20.6" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="211.0" y="150.3" width="9.1" height="21.7" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="221.3" y="154.3" width="9.1" height="17.7" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="231.6" y="150.3" width="9.1" height="21.7" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="241.9" y="158.3" width="9.1" height="13.7" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="252.2" y="161.1" width="9.1" height="10.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="262.5" y="165.1" width="9.1" height="6.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="272.8" y="161.1" width="9.1" height="10.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="283.1" y="161.1" width="9.1" height="10.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="293.4" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="314.0" y="165.1" width="9.1" height="6.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="324.3" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="334.6" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="344.9" y="156.1" width="9.1" height="15.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="355.2" y="165.1" width="9.1" height="6.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="365.5" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="375.7" y="158.3" width="9.1" height="13.7" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="386.0" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="396.3" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="406.6" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="416.9" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="427.2" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="437.5" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="468.4" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="478.7" y="165.1" width="9.1" height="6.9" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="509.6" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="519.9" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="530.2" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="550.8" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<rect x="674.3" y="172.0" width="9.1" height="1.0" rx="1" fill="#0072B2" opacity=".92"/>
+<line class="b" x1="56" y1="172.0" x2="684" y2="172.0" stroke="#9ca3af" stroke-width="1"/>
+<text class="ax" x="56.0" y="186.0" text-anchor="middle">0</text>
+<text class="ax" x="159.0" y="186.0" text-anchor="middle">10</text>
+<text class="ax" x="261.9" y="186.0" text-anchor="middle">20</text>
+<text class="ax" x="364.9" y="186.0" text-anchor="middle">30</text>
+<text class="ax" x="467.8" y="186.0" text-anchor="middle">40</text>
+<text class="ax" x="570.8" y="186.0" text-anchor="middle">50</text>
+<text class="ax" x="673.7" y="186.0" text-anchor="middle">60</text>
+<line x1="673.7" y1="172.0" x2="673.7" y2="146.0" stroke="#0072B2" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="673.7" y="142.0" text-anchor="end">Alon</text>
+<line x1="550.2" y1="172.0" x2="550.2" y2="146.0" stroke="#0072B2" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="550.2" y="142.0" text-anchor="end">Graham</text>
+<line x1="159.0" y1="172.0" x2="159.0" y2="74.0" stroke="#6b7280" stroke-width=".8" stroke-dasharray="1 3"/>
+<text class="ax" x="684.0" y="85.0" text-anchor="end">top 1% starts here (10)</text>
+<text class="lb" x="83.6" y="89.1">10,820 people at 1–2</text>
+<text class="pt" x="16" y="234">Problem-solving  M5</text>
+<text class="ps" x="16" y="249">importance-weighted problems · 13,563 score zero</text>
+<line class="g" x1="56" y1="348.0" x2="684" y2="348.0" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="351.0" text-anchor="end">1</text>
+<line class="g" x1="56" y1="325.2" x2="684" y2="325.2" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="328.2" text-anchor="end">10</text>
+<line class="g" x1="56" y1="302.4" x2="684" y2="302.4" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="305.4" text-anchor="end">100</text>
+<line class="g" x1="56" y1="279.6" x2="684" y2="279.6" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="282.6" text-anchor="end">1k</text>
+<line class="g" x1="56" y1="256.9" x2="684" y2="256.9" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="259.9" text-anchor="end">10k</text>
+<rect x="56.6" y="294.1" width="7.5" height="53.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="65.3" y="287.9" width="7.5" height="60.1" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="74.0" y="298.0" width="7.5" height="50.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="82.8" y="304.5" width="7.5" height="43.5" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="91.5" y="305.8" width="7.5" height="42.2" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="100.2" y="311.3" width="7.5" height="36.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="108.9" y="315.8" width="7.5" height="32.2" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="117.7" y="326.3" width="7.5" height="21.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="126.4" y="321.9" width="7.5" height="26.1" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="135.1" y="324.3" width="7.5" height="23.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="143.8" y="324.3" width="7.5" height="23.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="152.5" y="322.6" width="7.5" height="25.4" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="161.3" y="337.1" width="7.5" height="10.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="170.0" y="334.3" width="7.5" height="13.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="178.7" y="341.1" width="7.5" height="6.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="187.4" y="337.1" width="7.5" height="10.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="196.2" y="337.1" width="7.5" height="10.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="204.9" y="334.3" width="7.5" height="13.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="213.6" y="337.1" width="7.5" height="10.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="222.3" y="341.1" width="7.5" height="6.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="231.0" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="248.5" y="334.3" width="7.5" height="13.7" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="257.2" y="341.1" width="7.5" height="6.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="274.7" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="283.4" y="341.1" width="7.5" height="6.9" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="300.8" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="344.4" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="353.2" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="361.9" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="396.8" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="449.1" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="597.4" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<rect x="675.9" y="348.0" width="7.5" height="1.0" rx="1" fill="#D55E00" opacity=".92"/>
+<line class="b" x1="56" y1="348.0" x2="684" y2="348.0" stroke="#9ca3af" stroke-width="1"/>
+<text class="ax" x="56.0" y="362.0" text-anchor="middle">0</text>
+<text class="ax" x="143.2" y="362.0" text-anchor="middle">10</text>
+<text class="ax" x="230.4" y="362.0" text-anchor="middle">20</text>
+<text class="ax" x="317.7" y="362.0" text-anchor="middle">30</text>
+<text class="ax" x="404.9" y="362.0" text-anchor="middle">40</text>
+<text class="ax" x="492.1" y="362.0" text-anchor="middle">50</text>
+<text class="ax" x="579.3" y="362.0" text-anchor="middle">60</text>
+<text class="ax" x="666.6" y="362.0" text-anchor="middle">70</text>
+<line x1="684.0" y1="348.0" x2="684.0" y2="322.0" stroke="#D55E00" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="682.0" y="318.0" text-anchor="end">Szemeredi</text>
+<line x1="599.2" y1="348.0" x2="599.2" y2="322.0" stroke="#D55E00" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="599.2" y="318.0" text-anchor="end">Tao</text>
+<line x1="261.5" y1="348.0" x2="261.5" y2="250.0" stroke="#6b7280" stroke-width=".8" stroke-dasharray="1 3"/>
+<text class="ax" x="684.0" y="261.0" text-anchor="end">top 1% starts here (23.6)</text>
+<text class="lb" x="80.4" y="296.9">433 people at 1–2</text>
+<text class="pt" x="16" y="410">Combined  M4′</text>
+<text class="ps" x="16" y="425">α = 0.5, axis caps at 50 · nobody scores zero</text>
+<line class="g" x1="56" y1="524.0" x2="684" y2="524.0" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="527.0" text-anchor="end">1</text>
+<line class="g" x1="56" y1="501.2" x2="684" y2="501.2" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="504.2" text-anchor="end">10</text>
+<line class="g" x1="56" y1="478.4" x2="684" y2="478.4" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="481.4" text-anchor="end">100</text>
+<line class="g" x1="56" y1="455.6" x2="684" y2="455.6" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="458.6" text-anchor="end">1k</text>
+<line class="g" x1="56" y1="432.9" x2="684" y2="432.9" stroke="#e5e7eb" stroke-width=".5"/>
+<text class="ax" x="50" y="435.9" text-anchor="end">10k</text>
+<rect x="56.6" y="430.5" width="14.9" height="93.5" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="72.7" y="453.8" width="14.9" height="70.2" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="88.8" y="463.9" width="14.9" height="60.1" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="104.9" y="474.3" width="14.9" height="49.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="121.0" y="481.1" width="14.9" height="42.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="137.1" y="485.1" width="14.9" height="38.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="153.2" y="489.1" width="14.9" height="34.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="169.3" y="493.0" width="14.9" height="31.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="185.4" y="500.3" width="14.9" height="23.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="201.5" y="503.4" width="14.9" height="20.6" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="217.6" y="506.3" width="14.9" height="17.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="233.7" y="510.3" width="14.9" height="13.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="249.8" y="510.3" width="14.9" height="13.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="265.9" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="282.0" y="506.3" width="14.9" height="17.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="298.1" y="513.1" width="14.9" height="10.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="314.2" y="517.1" width="14.9" height="6.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="346.4" y="510.3" width="14.9" height="13.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="362.5" y="510.3" width="14.9" height="13.7" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="378.7" y="513.1" width="14.9" height="10.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="410.9" y="517.1" width="14.9" height="6.9" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="427.0" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="443.1" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="491.4" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="555.8" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="588.0" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="652.4" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<rect x="668.5" y="524.0" width="14.9" height="1.0" rx="1" fill="#009E73" opacity=".92"/>
+<line class="b" x1="56" y1="524.0" x2="684" y2="524.0" stroke="#9ca3af" stroke-width="1"/>
+<text class="ax" x="56.0" y="538.0" text-anchor="middle">0</text>
+<text class="ax" x="217.0" y="538.0" text-anchor="middle">20</text>
+<text class="ax" x="378.1" y="538.0" text-anchor="middle">40</text>
+<text class="ax" x="539.1" y="538.0" text-anchor="middle">60</text>
+<line x1="679.2" y1="524.0" x2="679.2" y2="498.0" stroke="#009E73" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="679.2" y="494.0" text-anchor="end">Alon</text>
+<line x1="666.6" y1="524.0" x2="666.6" y2="484.0" stroke="#009E73" stroke-width=".75" stroke-dasharray="2 2"/>
+<text class="an" x="666.6" y="480.0" text-anchor="end">Szemeredi</text>
+<line x1="142.2" y1="524.0" x2="142.2" y2="426.0" stroke="#6b7280" stroke-width=".8" stroke-dasharray="1 3"/>
+<text class="ax" x="684.0" y="437.0" text-anchor="end">top 1% starts here (10.7)</text>
+<text class="lb" x="79.1" y="439.5">12,669 people at 0–2</text>
+<text class="s" x="16" y="548">erdos_metric · 14,498 people with Erdős number ≤ 2 · built from out/lists/</text>
+</svg>

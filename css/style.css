@@ -1,0 +1,603 @@
+/* ---------------------------------------------------------------
+   Base tokens
+   --------------------------------------------------------------- */
+:root {
+  --bg:        #fdfdfc;
+  --fg:        #1c1b19;
+  --muted:     #6b6862;
+  --rule:      #e4e2dd;
+  --accent:    #8c4a2f;
+  --accent-bg: #f6efe9;
+  --max:       46rem;
+
+  /* Mondrian backdrop. Turn --pattern-opacity down to 0 to switch it off,
+     up toward 1 to make it shout. --pattern-size is the tile edge. */
+  --pattern-opacity: 0.38;
+  --pattern-size:    540px;   /* width of the 27x18 tile; 3x3 squares stay square */
+
+  --font-body: ui-serif, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-ui:   ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #16161a;
+    --fg:        #e8e6e1;
+    --muted:     #9a968e;
+    --rule:      #2d2d33;
+    --accent:    #e29a72;
+    --accent-bg: #26211e;
+
+    --pattern-opacity: 0.20;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+/* The dissection tiling sits behind everything, fixed so it does not scroll.
+   Readability is bought back by putting the text column on an opaque card. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: url("/assets/mondrian.svg");
+  background-size: var(--pattern-size) auto;
+  background-position: center top;
+  opacity: var(--pattern-opacity);
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------
+   Layout
+   --------------------------------------------------------------- */
+.wrap {
+  max-width: var(--max);
+  margin-inline: auto;
+  padding: 0 1.25rem;
+}
+
+main { padding-block: 2.5rem 3.5rem; }
+
+/* Opaque reading card floating over the pattern */
+main.wrap {
+  max-width: 44rem;
+  padding-inline: 2.5rem;
+  margin-block: 2rem 3rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  box-shadow: 0 2px 34px rgb(0 0 0 / 0.07);
+}
+
+main > section { margin-top: 3rem; }
+
+/* ---------------------------------------------------------------
+   Header + navigation
+   --------------------------------------------------------------- */
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.9rem;
+}
+
+.brand {
+  font-family: var(--font-ui);
+  font-weight: 620;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+.site-nav a,
+.site-nav summary {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.site-nav a:hover,
+.site-nav summary:hover {
+  color: var(--fg);
+  background: var(--accent-bg);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* "More" dropdown — <details>, so it works with zero JavaScript */
+.more { position: relative; }
+
+.more summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.more summary::-webkit-details-marker { display: none; }
+
+.more summary::after {
+  content: "";
+  display: inline-block;
+  width: 0.3em;
+  height: 0.3em;
+  margin-left: 0.4em;
+  vertical-align: 0.15em;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.more[open] summary::after { transform: rotate(-135deg); }
+
+.more-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+  min-width: 9rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.3rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.09);
+}
+
+/* ---------------------------------------------------------------
+   Typography
+   --------------------------------------------------------------- */
+h1, h2, h3 {
+  font-family: var(--font-ui);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.6rem;
+}
+
+h1 { font-size: 1.85rem; font-weight: 650; }
+h2 { font-size: 1.2rem;  font-weight: 620; margin-top: 0; }
+h3 { font-size: 1.02rem; font-weight: 600; }
+
+p { margin: 0 0 1rem; }
+
+a { color: var(--accent); text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.lede { font-size: 1.15rem; }
+
+.muted { color: var(--muted); }
+
+small, .small { font-size: 0.875rem; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem 0;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--accent-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  background: var(--accent-bg);
+  padding: 0.9rem 1rem;
+  border-radius: 8px;
+}
+
+pre code { background: none; padding: 0; }
+
+blockquote {
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--rule);
+  color: var(--muted);
+}
+
+/* A section heading with a hairline rule running to the right of it */
+.rule-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.4rem;
+}
+
+.rule-heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ---------------------------------------------------------------
+   Home: intro block
+   --------------------------------------------------------------- */
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+
+.intro-text { flex: 1 1 20rem; }
+
+.portrait {
+  flex: 0 0 auto;
+  width: 8.5rem;
+  height: 8.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  list-style: none;
+}
+
+/* ---------------------------------------------------------------
+   Publications / talks list
+   --------------------------------------------------------------- */
+/* ---------------------------------------------------------------
+   Draft notes — deliberately loud, in a colour used nowhere else,
+   so they are impossible to publish by accident. Delete when done.
+   --------------------------------------------------------------- */
+.draftnote {
+  border-left: 4px solid #c2410c;
+  background: #fff5ed;
+  color: #9a3412;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  padding: 0.7rem 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.3rem 0;
+}
+
+.draftnote::before {
+  content: "DRAFT NOTE";
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.75;
+  margin-bottom: 0.2rem;
+}
+
+.draftnote a { color: #9a3412; }
+.draftnote p { margin: 0 0 0.5rem; }
+.draftnote p:last-child { margin-bottom: 0; }
+
+@media (prefers-color-scheme: dark) {
+  .draftnote {
+    border-left-color: #fb923c;
+    background: #2b1a10;
+    color: #fdba74;
+  }
+  .draftnote a { color: #fdba74; }
+}
+
+/* ---------------------------------------------------------------
+   Ranking tables
+   --------------------------------------------------------------- */
+.rank-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  margin: 1.3rem 0;
+}
+
+.rank-table caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.5rem;
+}
+
+.rank-table th {
+  text-align: left;
+  font-weight: 620;
+  border-bottom: 2px solid var(--rule);
+  padding: 0.4rem 0.5rem;
+}
+
+.rank-table td {
+  border-bottom: 1px solid var(--rule);
+  padding: 0.4rem 0.5rem;
+}
+
+.rank-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.rank-table tr.origin td {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Figures inside prose */
+figure.fig { margin: 1.6rem 0; }
+figure.fig img { width: 100%; height: auto; border-radius: 8px; }
+figure.fig figcaption {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+figure.fig iframe { width: 100%; border: 0; display: block; }
+
+/* Highlighted callout, e.g. the playable game at the top of Research */
+.feature {
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent-bg);
+  padding: 1.1rem 1.3rem;
+  margin: 1.75rem 0 2.5rem;
+}
+
+.feature h2 {
+  font-size: 1.08rem;
+  margin-bottom: 0.35rem;
+}
+
+.feature p:last-child { margin-bottom: 0; }
+
+.year {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 2.5rem 0 1rem;
+}
+
+.entry {
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.entry:last-child { border-bottom: 0; }
+
+.entry-title {
+  font-family: var(--font-ui);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin: 0 0 0.3rem;
+}
+
+.authors { margin: 0 0 0.15rem; font-size: 0.95rem; }
+.authors .me { font-style: italic; font-weight: 600; }
+
+.venue { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.entry-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-top: 0.65rem;
+}
+
+details.fold { margin-top: 0.7rem; }
+
+details.fold > summary {
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--accent);
+  width: fit-content;
+}
+
+details.fold > summary:hover { text-decoration: underline; }
+
+details.fold > div,
+details.fold > p {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------
+   Blog index
+   --------------------------------------------------------------- */
+.post-list { list-style: none; padding: 0; margin: 0; }
+
+.post-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-list time {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--muted);
+  flex: 0 0 6rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-list a {
+  font-family: var(--font-ui);
+  font-size: 0.98rem;
+  text-decoration: none;
+  color: var(--fg);
+}
+
+.post-list a:hover { color: var(--accent); text-decoration: underline; }
+
+.post-meta {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: -0.2rem 0 2rem;
+}
+
+/* ---------------------------------------------------------------
+   Photos
+   --------------------------------------------------------------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1rem;
+}
+
+.gallery figure { margin: 0; }
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  display: block;
+}
+
+.gallery figcaption {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.45rem;
+}
+
+/* ---------------------------------------------------------------
+   CV
+   --------------------------------------------------------------- */
+.cv-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.25rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.cv-row .when {
+  flex: 0 0 7rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.cv-row .what { flex: 1 1 18rem; }
+.cv-row .what strong { font-family: var(--font-ui); font-size: 0.98rem; }
+
+/* ---------------------------------------------------------------
+   Footer
+   --------------------------------------------------------------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+  padding-block: 1.5rem 2.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.site-footer p { margin: 0; }
+
+/* ---------------------------------------------------------------
+   Small screens
+   --------------------------------------------------------------- */
+@media (max-width: 40rem) {
+  main.wrap {
+    padding-inline: 1.25rem;
+    margin-block: 0;
+    border-inline: 0;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 34rem) {
+  .site-header .wrap { padding-block: 0.75rem; }
+  .brand { flex: 1 0 100%; margin-bottom: 0.15rem; }
+  .site-nav { margin-left: -0.5rem; }
+  h1 { font-size: 1.6rem; }
+  .portrait { width: 6.5rem; height: 6.5rem; }
+  .post-list time { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

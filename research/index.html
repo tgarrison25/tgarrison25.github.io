@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · Thomas Garrison</title>
+<meta name="description" content="Publications and preprints of Thomas Garrison — combinatorics and automated reasoning.">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Thomas Garrison</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="/">Home</a>
+      <a href="/research/" aria-current="page">Research</a>
+      <a href="/talks/">Talks</a>
+      <a href="/blog/">Blog</a>
+      <a href="/photos/">Photos</a>
+      <details class="more">
+        <summary>More</summary>
+        <div class="more-menu">
+          <a href="/teaching/">Teaching</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>Research</h1>
+
+  <div class="feature">
+    <h2><a href="https://packit.surge.sh/">Play PackIt!</a></h2>
+    <p>
+      A turn-based rectangle-packing game I invented, playable in your browser. On turn
+      <em>t</em> you place a rectangle of area <em>t</em> or <em>t</em>+1 on an
+      <em>n</em> × <em>n</em> grid; in solitaire the goal is to pack the grid perfectly,
+      and in the two-player game whoever places last wins. Solitaire and AI modes are
+      live. The mathematics is <a href="#packit">below</a>.
+    </p>
+  </div>
+
+  <h2 class="rule-heading">Publications</h2>
+
+  <p class="year">2026</p>
+
+  <div class="entry" id="mondrian">
+    <p class="entry-title">New Upper Bounds on the Mondrian Art Problem</p>
+    <p class="authors"><span class="me">Thomas Garrison</span>, Chris Seiler, Aliaksei Semchankau</p>
+    <p class="venue">Preprint · arXiv:2609.01998 [math.CO] · September 2026</p>
+
+    <details class="fold">
+      <summary>Abstract</summary>
+      <p>
+        We present a new upper bound on the defect of the Mondrian Art Problem. The
+        Mondrian Art Problem asks for a partition of an <em>n</em> × <em>n</em> square
+        with rectangles of distinct dimensions such that the difference (defect) between
+        the largest and smallest rectangle areas is minimized. We prove that for any
+        <em>n</em> × <em>n</em> square, there exists a partition with defect
+        <em>O</em>(<em>n</em><sup>5/6</sup>), improving upon the previously conjectured
+        <em>O</em>(<em>n</em>/log <em>n</em>) upper bound. We also implement an algorithm
+        that provides empirical evidence supporting our theoretical bound.
+      </p>
+    </details>
+
+    <details class="fold">
+      <summary>BibTeX</summary>
+      <div>
+<pre><code>@misc{garrison2026mondrian,
+  title         = {New Upper Bounds on the {M}ondrian Art Problem},
+  author        = {Garrison, Thomas and Seiler, Chris and Semchankau, Aliaksei},
+  year          = {2026},
+  eprint        = {2609.01998},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.CO}
+}</code></pre>
+      </div>
+    </details>
+
+    <p class="entry-links">
+      <a href="https://arxiv.org/abs/2609.01998">arXiv</a>
+      <a href="https://arxiv.org/pdf/2609.01998">PDF</a>
+    </p>
+  </div>
+
+  <p class="year">2024</p>
+
+  <div class="entry" id="packit">
+    <p class="entry-title">PackIt! Gamified Rectangle Packing</p>
+    <p class="authors"><span class="me">Thomas Garrison</span>, Marijn J. H. Heule, Bernardo Subercaseaux</p>
+    <p class="venue">
+      12th International Conference on Fun with Algorithms (FUN 2024) ·
+      LIPIcs vol. 291, pp. 14:1–14:19
+    </p>
+
+    <details class="fold">
+      <summary>Abstract</summary>
+      <p>
+        We present and analyze PackIt!, a turn-based game consisting of packing
+        rectangles on an <em>n</em> × <em>n</em> grid. PackIt! can be easily played on
+        paper, either as a competitive two-player game or in solitaire fashion. On the
+        <em>t</em>-th turn, a rectangle of area <em>t</em> or <em>t</em>+1 must be
+        placed in the grid. In the two-player format of PackIt! whichever player places
+        a rectangle last wins, whereas the goal in the solitaire variant is to perfectly
+        pack the <em>n</em> × <em>n</em> grid. We analyze conditions for the existence
+        of a perfect packing over <em>n</em> × <em>n</em>, then present an automated
+        reasoning approach that allows finding perfect games of PackIt! up to
+        <em>n</em> = 50 which includes a novel SAT-encoding technique of independent
+        interest, and conclude by proving an NP-hardness result.
+      </p>
+    </details>
+
+    <details class="fold">
+      <summary>BibTeX</summary>
+      <div>
+<pre><code>@InProceedings{garrison_et_al:LIPIcs.FUN.2024.14,
+  author    = {Garrison, Thomas and Heule, Marijn J. H. and Subercaseaux, Bernardo},
+  title     = {{PackIt!: Gamified Rectangle Packing}},
+  booktitle = {12th International Conference on Fun with Algorithms (FUN 2024)},
+  series    = {Leibniz International Proceedings in Informatics (LIPIcs)},
+  volume    = {291},
+  pages     = {14:1--14:19},
+  year      = {2024},
+  publisher = {Schloss Dagstuhl -- Leibniz-Zentrum f{\"u}r Informatik},
+  doi       = {10.4230/LIPIcs.FUN.2024.14}
+}</code></pre>
+      </div>
+    </details>
+
+    <p class="entry-links">
+      <a href="https://doi.org/10.4230/LIPIcs.FUN.2024.14">DOI</a>
+      <a href="https://arxiv.org/abs/2403.12195">arXiv</a>
+      <a href="https://arxiv.org/pdf/2403.12195">PDF</a>
+      <a href="https://packit.surge.sh/">Play the game</a>
+    </p>
+  </div>
+
+  <div class="entry" id="wcs">
+    <p class="entry-title">Weakly Consecutive Sequences</p>
+    <p class="authors"><span class="me">Thomas Garrison</span>, Chris Seiler, Andrew Knowles</p>
+    <p class="venue">Preprint · arXiv:2401.09497 [math.CO] · January 2024</p>
+
+    <details class="fold">
+      <summary>Abstract</summary>
+      <p>
+        A weakly consecutive sequence (WCS) is a permutation σ of {1, …, <em>k</em>}
+        such that if an integer <em>d</em> divides σ(<em>i</em>), then <em>d</em> also
+        divides σ(<em>i</em> ± <em>d</em>) insofar as these are defined. The structure
+        of weakly consecutive sequences is surprisingly rich, and it is difficult to
+        find a formula for the number <em>N</em>(<em>k</em>) of WCS's of length
+        <em>k</em>. However, for a given <em>k</em> we describe four starting sequences,
+        to each of which we can apply three rules or operations to generate new WCS's.
+        We conjecture that any WCS can be constructed by applying these rules, which
+        depend in an intricate way on the primality of <em>k</em> and surrounding
+        integers. We find bounds for <em>N</em>(<em>k</em>) by analyzing these rules.
+      </p>
+    </details>
+
+    <details class="fold">
+      <summary>BibTeX</summary>
+      <div>
+<pre><code>@misc{garrison2024weakly,
+  title         = {Weakly Consecutive Sequences},
+  author        = {Garrison, Thomas and Seiler, Chris and Knowles, Andrew},
+  year          = {2024},
+  eprint        = {2401.09497},
+  archivePrefix = {arXiv},
+  primaryClass  = {math.CO}
+}</code></pre>
+      </div>
+    </details>
+
+    <p class="entry-links">
+      <a href="https://arxiv.org/abs/2401.09497">arXiv</a>
+      <a href="https://arxiv.org/pdf/2401.09497">PDF</a>
+    </p>
+  </div>
+
+  <hr>
+
+  <section>
+    <h2 class="rule-heading">In progress</h2>
+    <p class="muted">
+      Work that isn't a preprint yet, but that I'm happy to talk about.
+    </p>
+
+    <div class="entry" id="solving-packit">
+      <p class="entry-title">Solving PackIt!</p>
+      <p>
+        PackIt! is a 2-player game played on an <em>n</em> × <em>n</em> board where on the
+        <em>i</em>th turn you play a rectangle of area <em>i</em> or <em>i</em>+1. As in
+        normal play, you win if you move last. The game strategy is surprisingly complex
+        and is unsolved for <em>n</em> ≥ 11. We conjecture that for games of odd board
+        size, Player 1 wins, and for even board size, Player 2 wins. This conjecture has
+        been verified for <em>n</em> &lt; 11.
+      </p>
+      <p class="small muted">
+        The solitaire variant is the subject of the <a href="#packit">FUN 2024 paper</a>.
+        Presented at <a href="/talks/">SEICCGTC 2026</a> and in the Northeastern graduate
+        seminar.
+      </p>
+    </div>
+
+    <div class="entry">
+      <p class="entry-title">Tiling rectangles with other rectangles up to symmetry</p>
+      <p class="authors">Advised by James Cummings</p>
+      <p>
+        How many ways are there to tile an <em>m</em> × <em>n</em> rectangle with
+        rectangles of integer side length, counted up to the symmetries of the rectangle?
+        We answer this using Pólya's formula for the fixed points together with Verrill
+        and Smith's formula for the unrestricted count. Bounding the growth rate with
+        eigenvalue methods — Perron–Frobenius and Fischer–Courant — we pin the growth
+        constant γ between 2.299 and 2.31.
+      </p>
+      <p class="small muted">Related OEIS sequence: <a href="https://oeis.org/A347825">A347825</a> (the 2 × <em>n</em> case).</p>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2026 Thomas Garrison · Last updated 8 October 2026</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>The Erd&#337;s number, made continuous</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:transparent;--fg:#111827;--mut:#6b7280;--dim:#9ca3af;--line:#e5e7eb;
+      --card:#f9fafb;--live:#2563eb;--dead:#b98b56}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0f19;--fg:#f3f4f6;--mut:#9ca3af;
+      --dim:#6b7280;--line:#1f2937;--card:#111827}}
+*{box-sizing:border-box}
+body{margin:0 auto;padding:4px 2px 14px;background:var(--bg);color:var(--fg);max-width:960px;
+  font:14px/1.55 -apple-system,Segoe UI,Helvetica,Arial,sans-serif}
+h1{font-size:20px;margin:0 0 4px}
+.lede{color:var(--mut);font-size:13px;margin:0 0 18px;max-width:74ch}
+.mono{font-family:ui-monospace,Menlo,monospace;color:var(--fg)}
+.bar{display:flex;gap:6px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+button{font:inherit;font-size:12px;padding:5px 11px;border-radius:6px;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg);color:var(--fg)}
+button:hover{border-color:var(--dim)}
+button[aria-pressed=true]{border-color:var(--live);color:var(--live);font-weight:600}
+svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:20px;font-size:11.5px;color:var(--mut);margin-top:8px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.sw{width:9px;height:9px;border-radius:50%;display:inline-block}
+.note{font-size:11.5px;color:var(--dim);margin-top:14px;line-height:1.55;max-width:78ch}
+</style>
+
+
+<p class="lede">The classical version is an integer &mdash; 1 if you wrote a paper
+with him, 2 if you wrote one with someone who did &mdash; which throws away
+<i>how much</i> you worked together. S&aacute;rk&#337;zy's 62 joint papers and a
+one-off coauthor both score 1. Replacing it with <span class="mono">1/n</span> for
+<span class="mono">n</span> papers, and <span class="mono">1+1/n</span> for
+<span class="mono">n</span> collaborators at the next tier, spreads each tier out
+without letting anyone cross an integer: at <span class="mono">n=1</span> the two
+branches give exactly 1 and exactly 2.</p>
+
+<div class="bar">
+  <button id="go">Replay</button>
+  <button id="mode" aria-pressed="false">Both</button>
+  <span style="font-size:11.5px;color:var(--dim)">Erd&#337;s-1 tier only &mdash;
+    the only one where deaths are recorded</span>
+</div>
+<svg id="v" viewBox="0 0 680 300" role="img"
+     aria-label="Two number lines. Before, all 514 Erdos-1 coauthors sit on the single point 1. After, each moves to 1/n for n joint papers, spreading from 0.016 to 1, coloured by life status."></svg>
+<div class="legend">
+  <span><i class="sw" style="background:#2563eb"></i><b>Presumed living &mdash; 288</b></span>
+  <span><i class="sw" style="background:#b98b56"></i>Known deceased &mdash; 226</span>
+  <span><i class="sw" style="background:currentColor"></i>Erd&#337;s (d. 1996)</span>
+</div>
+<p class="note" id="note"></p>
+
+<script>
+const LIVE = [[1, 176], [2, 40], [3, 23], [4, 11], [5, 10], [6, 3], [7, 8], [9, 1], [10, 1], [11, 3], [14, 1], [15, 1], [18, 1], [19, 2], [21, 2], [23, 2], [27, 1], [29, 1], [62, 1]], DEAD = [[1, 136], [2, 30], [3, 14], [4, 10], [5, 5], [6, 3], [7, 5], [8, 5], [9, 2], [10, 1], [12, 1], [14, 3], [15, 1], [18, 1], [20, 1], [28, 1], [30, 1], [32, 1], [35, 2], [42, 1], [50, 1], [56, 1]], LBL = [["Sárközy", 62, 1], ["Hajnal", 56, 0], ["Faudree", 50, 0], ["Schelp", 42, 0], ["Rousseau", 35, 0], ["Sós", 35, 0], ["Alon", 5, 1], ["Pomerance", 23, 1]];
+const NS='http://www.w3.org/2000/svg', svg=document.getElementById('v');
+const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const X0=52,X1=612,YB=78,YA=212,C_LIVE='#2563eb',C_DEAD='#b98b56';
+const px=v=>X0+v*(X1-X0);
+
+function axis(y,label,note){
+  svg.appendChild(el('line',{x1:X0,y1:y,x2:X1,y2:y,stroke:'var(--dim)','stroke-width':1}));
+  [0,.25,.5,.75,1].forEach(v=>{
+    const maj=(v===0||v===1);
+    svg.appendChild(el('line',{x1:px(v),y1:y-(maj?6:3),x2:px(v),y2:y+(maj?6:3),
+      stroke:maj?'var(--dim)':'var(--line)','stroke-width':1}));
+    const t=el('text',{x:px(v),y:y+22,'text-anchor':'middle','font-size':11,
+      fill:'var(--dim)','font-family':'ui-monospace,Menlo,monospace'});
+    t.textContent=maj?v:(v===.5?'½':(v===.25?'¼':'¾'));
+    svg.appendChild(t);
+  });
+  const a=el('text',{x:X0,y:y-44,'font-size':12.5,'font-weight':600,fill:'var(--fg)'});
+  a.textContent=label; svg.appendChild(a);
+  const b=el('text',{x:X0,y:y-28,'font-size':11,fill:'var(--mut)'});
+  b.textContent=note; svg.appendChild(b);
+}
+axis(YB,'Before — every coauthor is exactly 1', 514 + ' people on a single point');
+axis(YA,'After — 1/n','more joint papers pulls you left; single-paper coauthors stay at 1');
+
+const dots=[];
+LIVE.forEach(([n,c])=>{for(let i=0;i<c;i++)dots.push({to:1/n,live:1});});
+DEAD.forEach(([n,c])=>{for(let i=0;i<c;i++)dots.push({to:1/n,live:0});});
+const nodes=dots.map((d,i)=>{
+  const j=((i*2654435761)%1000)/1000;
+  const dy=(d.live?-1:1)*(3+j*11);
+  const c=el('circle',{cx:px(1),cy:YB+dy,r:d.live?2.9:2.3,
+    fill:d.live?C_LIVE:C_DEAD,opacity:d.live?.85:.5});
+  svg.appendChild(c); return {c,d,dy};
+});
+const erd=el('circle',{cx:px(0),cy:YB,r:4.5,fill:'currentColor'});
+svg.appendChild(erd);
+
+const lg=el('g',{opacity:0}); svg.appendChild(lg);
+LBL.forEach(([nm,n,live],i)=>{
+  const v=1/n, up=i%2===0, y=YA+(up?-24:42);
+  lg.appendChild(el('line',{x1:px(v),y1:YA+(up?-16:16),x2:px(v),y2:y+(up?5:-9),
+    stroke:'var(--dim)','stroke-width':.75}));
+  const t=el('text',{x:px(v),y:y,'text-anchor':'middle','font-size':10.5,
+    'font-weight':live?600:400,fill:live?'var(--fg)':'var(--mut)'});
+  t.textContent=nm+' '+v.toFixed(v<0.1?3:2); lg.appendChild(t);
+});
+
+let mode=2, raf=null;
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function vis(){nodes.forEach(({c,d})=>{
+  const on=(mode===2)||(mode===d.live);
+  c.setAttribute('opacity',on?(d.live?.85:.5):.05);});}
+function play(){
+  if(raf)cancelAnimationFrame(raf);
+  lg.setAttribute('opacity',0);
+  const T=2000,t0=performance.now();
+  (function step(now){
+    const p=Math.min(1,(now-t0)/T),e=ease(p);
+    nodes.forEach(({c,d,dy})=>{
+      c.setAttribute('cx',px(1+(d.to-1)*e));
+      c.setAttribute('cy',YB+dy+(YA-YB)*e);});
+    erd.setAttribute('cy',YB+(YA-YB)*e);
+    lg.setAttribute('opacity',Math.max(0,(p-.75)/.25));
+    if(p<1)raf=requestAnimationFrame(step);
+  })(t0);
+}
+const mb=document.getElementById('mode');
+mb.addEventListener('click',()=>{
+  mode=(mode===2)?1:(mode===1?0:2);
+  mb.textContent=mode===2?'Both':(mode===1?'Living only':'Deceased only');
+  mb.setAttribute('aria-pressed',mode!==2); vis();});
+document.getElementById('go').addEventListener('click',play);
+document.getElementById('note').innerHTML =
+  'The pile-up that stays put is the point: 312 of 514 Erdős-1 people ' +
+  'wrote exactly one paper with him, so 61% of the tier is uncompressed and still ' +
+  'sits at 1.0. The refinement separates the heavy collaborators beautifully and ' +
+  'does nothing at all for the long tail. One caveat: at the Erdős-2 tier ' +
+  'Grossman lists each person’s Erdős-1 <i>coauthors</i>, not joint-paper ' +
+  'counts, so n there is a proxy — the Erdős-1 tier shown here is exact.';
+setTimeout(play,350);
+
+function _reportHeight(){
+  try { parent.postMessage({type:'erdos-continuous-height',
+        height: document.body.scrollHeight}, '*'); } catch (e) {}
+}
+if (window.ResizeObserver) new ResizeObserver(_reportHeight).observe(document.body);
+_reportHeight();
+
+</script>

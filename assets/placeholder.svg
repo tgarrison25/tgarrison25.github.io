@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Placeholder image">
+  <rect width="400" height="300" fill="#ece7e0"/>
+  <path d="M0 300 L150 150 L235 235 L300 180 L400 280 L400 300 Z" fill="#cfc6b9"/>
+  <circle cx="305" cy="78" r="34" fill="#dcd4c8"/>
+  <text x="200" y="160" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#8d8377">replace me</text>
+</svg>
