@@ -6,7 +6,7 @@
 <text class="t" x="16" y="26">Distribution of each Erdős-adjacency metric</text>
 <text class="s" x="16" y="44">Equal-width bins; score across the bottom, people up the side on a log scale.</text>
 <text class="pt" x="16" y="58">Collaboration  M2</text>
-<text class="ps" x="16" y="73">distinct Erdős-1 coauthors · 216 score zero</text>
+<text class="ps" x="16" y="73">distinct Erdős-1 coauthors · 421 score zero</text>
 <line class="g" x1="56" y1="172.0" x2="684" y2="172.0" stroke="#e5e7eb" stroke-width=".5"/>
 <text class="ax" x="50" y="175.0" text-anchor="end">1</text>
 <line class="g" x1="56" y1="149.2" x2="684" y2="149.2" stroke="#e5e7eb" stroke-width=".5"/>
@@ -188,5 +188,5 @@
 <line x1="142.2" y1="524.0" x2="142.2" y2="426.0" stroke="#6b7280" stroke-width=".8" stroke-dasharray="1 3"/>
 <text class="ax" x="684.0" y="437.0" text-anchor="end">top 1% starts here (10.7)</text>
 <text class="lb" x="79.1" y="439.5">12,669 people at 0–2</text>
-<text class="s" x="16" y="548">erdos_metric · 14,498 people with Erdős number ≤ 2 · built from out/lists/</text>
+<text class="s" x="16" y="548">erdos_metric · 14,703 people with Erdős number ≤ 2 or Erdős-problem credit · built from out/lists/</text>
 </svg>
