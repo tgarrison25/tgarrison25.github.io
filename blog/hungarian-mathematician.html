@@ -403,6 +403,14 @@
               title="Erdős-adjacency explorer"></iframe>
     </figure>
 
+    <h2 id="search">Search by name</h2>
+
+    <figure class="fig">
+      <iframe id="erdos-search" src="/erdos/search_embed.html?v=1"
+              style="height:150px" loading="lazy"
+              title="Search the rankings by name"></iframe>
+    </figure>
+
     <!-- Provenance, kept out of the rendered page.
          DATA VERSION: out/lists/*.csv as of 2026-08-25 17:21; every table checked
          against them on 2026-10-08.
@@ -476,6 +484,9 @@ window.addEventListener('message', function (e) {
   }
   if (e.data.type === 'erdos-continuous-height') {
     document.getElementById('erdos-continuous').style.height = e.data.height + 'px';
+  }
+  if (e.data.type === 'erdos-search-height') {
+    document.getElementById('erdos-search').style.height = e.data.height + 'px';
   }
 });
 </script>

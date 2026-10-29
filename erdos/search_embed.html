@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Name search</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--bg:transparent;--fg:#111827;--mut:#6b7280;--dim:#9ca3af;--line:#e5e7eb;
+      --card:#f9fafb;--blue:#0072B2}
+@media(prefers-color-scheme:dark){:root{--bg:#0b0f19;--fg:#f3f4f6;--mut:#9ca3af;
+      --dim:#6b7280;--line:#1f2937;--card:#111827}}
+*{box-sizing:border-box}
+body{margin:0 auto;padding:4px 2px 14px;background:var(--bg);color:var(--fg);
+  font:14px/1.5 -apple-system,Segoe UI,Helvetica,Arial,sans-serif;max-width:1000px}
+.note{font-size:12px;color:var(--mut);margin:0 0 12px;max-width:70ch}
+input[type=search]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;
+  background:var(--bg);color:var(--fg);font:inherit;font-size:15px}
+input[type=search]:focus{outline:2px solid var(--blue);outline-offset:1px;border-color:transparent}
+#status{font-size:12px;color:var(--dim);margin:8px 0 0;min-height:1.5em}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.who{font-weight:650;font-size:15px}
+.alias{color:var(--mut);font-weight:400;font-size:13px}
+.en{font-size:12px;color:var(--mut);margin:1px 0 8px}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-top:1px solid var(--line);
+  font-size:13px}
+.kv span:first-child{color:var(--mut)}
+.kv b{font-variant-numeric:tabular-nums;font-weight:600;text-align:right;white-space:nowrap}
+.kv i{font-style:normal;color:var(--dim);font-weight:400}
+</style>
+
+<p class="note">Collaboration data is only available for people with Erdős number 1 or 2
+(from Grossman's Erdős Number Project). Problem credit is read automatically off
+erdosproblems.com, so it can miss or misattribute a paper. Ranks leave out Erdős himself.</p>
+
+<input type="search" id="q" placeholder="Search a name, e.g. Lovász" autocomplete="off"
+       aria-label="Search the rankings by name">
+<p id="status" aria-live="polite"></p>
+<div class="cards" id="out"></div>
+
+<script>
+(function () {
+  var q = document.getElementById('q'), out = document.getElementById('out'),
+      status = document.getElementById('status');
+  var rows = null, loading = null, N = 0, N1 = 0;
+  // field order in search_data.json: name, alias, en, m1, m2, m3, m5, m4, m4p
+  var METRICS = [
+    {i: 8, label: 'Combined, weighted (M4′)'},
+    {i: 7, label: 'Combined (M4)'},
+    {i: 4, label: 'Erdős-1 coauthors (M2)', collab: true},
+    {i: 3, label: 'Papers with Erdős (M1)', only1: true},
+    {i: 5, label: 'Erdős problems (M3)'},
+    {i: 6, label: 'Weighted problems (M5)'}
+  ];
+
+  function fold(s) {
+    return s.normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .replace(/ł/g, 'l').replace(/ø/g, 'o').toLowerCase();
+  }
+
+  // competition ranks: 1 + number of people strictly ahead
+  function rankCol(i, filter) {
+    var vals = [];
+    rows.forEach(function (r) { if (filter(r)) vals.push(r[i]); });
+    vals.sort(function (a, b) { return b - a; });
+    var first = new Map(), count = new Map();
+    vals.forEach(function (v, k) {
+      if (!first.has(v)) first.set(v, k + 1);
+      count.set(v, (count.get(v) || 0) + 1);
+    });
+    return {first: first, count: count};
+  }
+
+  function load() {
+    if (loading) return loading;
+    status.textContent = 'Loading 14,704 people…';
+    loading = fetch('search_data.json').then(function (r) { return r.json(); })
+      .then(function (d) {
+        rows = d.rows;
+        rows.forEach(function (r) { r.key = fold(r[0] + ' ' + r[1]); });
+        N = rows.length;
+        N1 = rows.filter(function (r) { return r[2] === 1; }).length;
+        METRICS.forEach(function (m) {
+          m.rank = rankCol(m.i, m.only1 ? function (r) { return r[2] === 1; }
+                                         : function () { return true; });
+        });
+        status.textContent = '';
+        render();
+      })
+      .catch(function () { status.textContent = 'Could not load the data.'; loading = null; });
+    return loading;
+  }
+
+  function fmt(v) { return (Math.round(v * 100) / 100).toLocaleString('en-US'); }
+
+  function cell(m, r) {
+    if (m.only1 && r[2] !== 1) return '<i>Erdős-1 only</i>';
+    if (m.collab && r[2] === 0) return '<i>not in the data</i>';
+    var v = r[m.i];
+    if (!v) return '0';
+    var pool = m.only1 ? N1 : N, k = m.rank.first.get(v), tied = m.rank.count.get(v) > 1;
+    return fmt(v) + ' <i>· ' + (tied ? 'tied ' : '') + '#' + k.toLocaleString('en-US') +
+           ' of ' + pool.toLocaleString('en-US') + '</i>';
+  }
+
+  function esc(s) {
+    return s.replace(/[&<>"]/g, function (c) {
+      return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c];
+    });
+  }
+
+  function card(r) {
+    var en = r[2] === 1 ? 'Erdős number 1' : r[2] === 2 ? 'Erdős number 2'
+           : 'Erdős number 3+ (not in Grossman’s lists)';
+    var h = '<div class="card"><div class="who">' + esc(r[0]) +
+            (r[1] ? ' <span class="alias">(' + esc(r[1]) + ')</span>' : '') +
+            '</div><div class="en">' + en + '</div>';
+    METRICS.forEach(function (m) {
+      h += '<div class="kv"><span>' + m.label + '</span><b>' + cell(m, r) + '</b></div>';
+    });
+    return h + '</div>';
+  }
+
+  function render() {
+    var s = fold(q.value).replace(/[.,]/g, ' ').trim();
+    if (!rows) { out.innerHTML = ''; return; }
+    if (s.length < 2) { out.innerHTML = ''; status.textContent = ''; post(); return; }
+    var toks = s.split(/\s+/);
+    var hits = rows.filter(function (r) {
+      return toks.every(function (t) { return r.key.indexOf(t) !== -1; });
+    });
+    // whole-word matches first, then by the combined score (rows arrive sorted by it)
+    var word = function (r) {
+      return toks.every(function (t) { return (' ' + r.key + ' ').indexOf(' ' + t) !== -1; }) ? 0 : 1;
+    };
+    hits.sort(function (a, b) { return word(a) - word(b); });
+    var MAX = 8;
+    out.innerHTML = hits.slice(0, MAX).map(card).join('');
+    status.textContent = !hits.length
+      ? 'No one by that name. Only Erdős numbers 1 and 2 are covered, plus anyone ' +
+        'credited on an Erdős problem.'
+      : hits.length > MAX ? 'Showing ' + MAX + ' of ' + hits.length.toLocaleString('en-US') +
+        ' matches — type more of the name.' : '';
+    post();
+  }
+
+  function post() {
+    try {
+      // body height, not scrollHeight: scrollHeight never drops below the frame's
+      // current height, so the frame could grow but never shrink back
+      parent.postMessage({type: 'erdos-search-height',
+                          height: Math.ceil(document.body.getBoundingClientRect().height) + 20}, '*');
+    } catch (e) {}
+  }
+
+  q.addEventListener('focus', load);
+  q.addEventListener('input', function () { load(); render(); });
+  window.addEventListener('load', post);
+  if (window.ResizeObserver) new ResizeObserver(post).observe(document.body);
+})();
+</script>
