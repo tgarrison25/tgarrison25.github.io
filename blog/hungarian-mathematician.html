@@ -339,14 +339,14 @@
         <tr><th class="num">#</th><th>Name</th><th class="num">M5</th><th class="num">M2</th></tr>
       </thead>
       <tbody>
-        <tr class="origin"><td class="num">0</td><td>Paul Erdős</td><td class="num">342.06</td><td class="num">515</td></tr>
+        <tr class="origin"><td class="num">0</td><td>Paul Erdős</td><td class="num">337.56</td><td class="num">515</td></tr>
         <tr><td class="num">1</td><td>Endre Szemerédi</td><td class="num">72.17</td><td class="num">31</td></tr>
-        <tr><td class="num">2</td><td>Terence Tao</td><td class="num">62.27</td><td class="num">3</td></tr>
+        <tr><td class="num">2</td><td>Terence Tao</td><td class="num">63.69</td><td class="num">3</td></tr>
         <tr><td class="num">3</td><td>Vojtěch Rödl</td><td class="num">45.04</td><td class="num">44</td></tr>
         <tr><td class="num">4</td><td>Noga Alon</td><td class="num">39.56</td><td class="num">60</td></tr>
         <tr><td class="num">5</td><td>Benny Sudakov</td><td class="num">35.85</td><td class="num">14</td></tr>
         <tr><td class="num">6</td><td>Imre Z. Ruzsa</td><td class="num">34.27</td><td class="num">25</td></tr>
-        <tr><td class="num">7</td><td>Ronald Graham</td><td class="num">33.17</td><td class="num">48</td></tr>
+        <tr><td class="num">7</td><td>Ronald Graham</td><td class="num">31.99</td><td class="num">48</td></tr>
         <tr><td class="num">8</td><td>Jacob Fox</td><td class="num">28.25</td><td class="num">7</td></tr>
         <tr><td class="num">9</td><td>David Conlon</td><td class="num">26.89</td><td class="num">2</td></tr>
         <tr><td class="num">10</td><td>Joel Spencer</td><td class="num">26.06</td><td class="num">37</td></tr>
@@ -366,15 +366,15 @@
         <tr><th class="num">#</th><th>Name</th><th class="num">Score</th><th class="num">M2</th><th class="num">M5</th></tr>
       </thead>
       <tbody>
-        <tr class="origin"><td class="num">0</td><td>Paul Erdős</td><td class="num">666.1</td><td class="num">515</td><td class="num">342.06</td></tr>
+        <tr class="origin"><td class="num">0</td><td>Paul Erdős</td><td class="num">663.0</td><td class="num">515</td><td class="num">337.56</td></tr>
         <tr><td class="num">1</td><td>Noga Alon</td><td class="num">77.4</td><td class="num">60</td><td class="num">39.56</td></tr>
         <tr><td class="num">2</td><td>Endre Szemerédi</td><td class="num">75.8</td><td class="num">31</td><td class="num">72.17</td></tr>
         <tr><td class="num">3</td><td>Vojtěch Rödl</td><td class="num">67.9</td><td class="num">44</td><td class="num">45.04</td></tr>
-        <tr><td class="num">4</td><td>Ronald Graham</td><td class="num">63.0</td><td class="num">48</td><td class="num">33.17</td></tr>
+        <tr><td class="num">4</td><td>Ronald Graham</td><td class="num">62.2</td><td class="num">48</td><td class="num">31.99</td></tr>
         <tr><td class="num">5</td><td>Béla Bollobás</td><td class="num">54.1</td><td class="num">46</td><td class="num">22.79</td></tr>
         <tr><td class="num">6</td><td>Joel Spencer</td><td class="num">48.9</td><td class="num">37</td><td class="num">26.06</td></tr>
         <tr><td class="num">7</td><td>Zoltán Füredi</td><td class="num">47.9</td><td class="num">41</td><td class="num">19.81</td></tr>
-        <tr><td class="num">8</td><td>Terence Tao</td><td class="num">45.6</td><td class="num">3</td><td class="num">62.27</td></tr>
+        <tr><td class="num">8</td><td>Terence Tao</td><td class="num">46.6</td><td class="num">3</td><td class="num">63.69</td></tr>
         <tr><td class="num">9</td><td>Imre Z. Ruzsa</td><td class="num">44.6</td><td class="num">25</td><td class="num">34.27</td></tr>
         <tr><td class="num">10</td><td>Vera T. Sós</td><td class="num">41.1</td><td class="num">40</td><td class="num">11.22</td></tr>
       </tbody>
@@ -399,7 +399,7 @@
     <h2 id="explorer">Interactive sliders</h2>
 
     <figure class="fig">
-      <iframe id="erdos-explorer" src="/erdos/explorer_embed.html?v=7"
+      <iframe id="erdos-explorer" src="/erdos/explorer_embed.html?v=8"
               style="height:2200px" loading="lazy"
               title="Erdős-adjacency explorer"></iframe>
     </figure>
@@ -419,12 +419,14 @@
          (Erdos M3 78.0 -> 158.0, M4 573.6 -> 661.5).
          Erdos has no M5 -- build_m5.py drops him from every author list. Recounted on
          2026-10-08 from out/m5_per_problem.json over every credited reference with an
-         Erdos author, excluding erdos|e (may be a different Erdos): 342.06.
+         Erdos author, excluding erdos|e (may be a different Erdos): 337.56 (342.06 before
+         M5 started reading the history-adjudicated winners; #433, #543, #1217 moved
+         his paper from resolver to partial, -4.50).
          The AI-resolution rule only removes his full credit where a machine settled
          the problem itself; on #26 the AI result was on Tenenbaum's weaker variant,
          so Davenport-Erdos 1951 keeps the resolver slot.
          Combined: 100*0.5*(515/60) = 429.2 collaboration, plus
-         100*0.5*(342.06/72.17) = 237.0 problems  ->  666.1. -->
+         100*0.5*(337.56/72.17) = 233.9 problems  ->  663.0. -->
 
     <p>
       If you want any other comparisons, or want to know where you rank, email me at
